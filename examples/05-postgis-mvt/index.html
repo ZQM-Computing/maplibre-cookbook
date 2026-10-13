@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MapLibre Pattern 05: PostGIS MVT</title>
+  <link href="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.css" rel="stylesheet">
+  <script src="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.js"></script>
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { width: 100vw; height: 100vh; }
+    .info { position: absolute; top: 10px; left: 10px; background: white; padding: 10px; border-radius: 4px; z-index: 1; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="info">
+    <h3>PostGIS MVT</h3>
+    <p>Generate Mapbox Vector Tiles from PostGIS.</p>
+  </div>
+  <script>
+    // This example shows the client-side rendering.
+    // Server-side: use ST_AsMVT in PostGIS to generate tiles.
+
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: {
+        version: 8,
+        sources: {
+          'osm': {
+            type: 'vector',
+            tiles: ['https://demotiles.maplibre.org/tiles/{z}/{x}/{y}.pbf'],
+            tileSize: 512
+          },
+          'postgis-mvt': {
+            type: 'vector',
+            tiles: ['http://localhost:8080/mvt/{z}/{x}/{y}.pbf'],
+            tileSize: 512
+          }
+        },
+        layers: [
+          { id: 'bg', type: 'background', paint: { 'background-color': '#f0f0f0' } },
+          { id: 'osm', type: 'fill', source: 'osm', 'source-layer': 'landuse', paint: { 'fill-color': '#d4e6c3' } },
+          {
+            id: 'postgis-layer',
+            type: 'fill',
+            source: 'postgis-mvt',
+            'source-layer': 'default',
+            paint: { 'fill-color': '#e07b24', 'fill-opacity': 0.5 }
+          }
+        ]
+      },
+      center: [-80.92, 29.02],
+      zoom: 10
+    });
+
+    map.addControl(new maplibregl.NavigationControl());
+
+    // Server-side SQL (PostGIS):
+    // SELECT ST_AsMVT(q, 'default', 4096, 'geom') AS mvt
+    // FROM (
+    //   ST_AsMVTGeom(geom, ST_TileEnvelope(z, x, y), 4096, 256, true) AS geom
+    //   FROM my_table
+    //   WHERE geom && ST_TileEnvelope(z, x, y)
+    // ) q;
+  </script>
+</body>
+</html>

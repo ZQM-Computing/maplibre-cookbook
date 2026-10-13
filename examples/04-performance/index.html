@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MapLibre Pattern 04: Performance</title>
+  <link href="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.css" rel="stylesheet">
+  <script src="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.js"></script>
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { width: 100vw; height: 100vh; }
+    .info { position: absolute; top: 10px; left: 10px; background: white; padding: 10px; border-radius: 4px; z-index: 1; }
+    .stats { position: absolute; bottom: 10px; left: 10px; background: white; padding: 10px; border-radius: 4px; z-index: 1; font-family: monospace; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="info">
+    <h3>Performance Tuning</h3>
+    <p>Monitor FPS and tile loading.</p>
+  </div>
+  <div class="stats" id="stats">FPS: --</div>
+  <script>
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: {
+        version: 8,
+        sources: {
+          'osm': {
+            type: 'vector',
+            tiles: ['https://demotiles.maplibre.org/tiles/{z}/{x}/{y}.pbf'],
+            tileSize: 512
+          }
+        },
+        layers: [
+          { id: 'bg', type: 'background', paint: { 'background-color': '#f0f0f0' } },
+          { id: 'osm', type: 'fill', source: 'osm', 'source-layer': 'landuse', paint: { 'fill-color': '#d4e6c3' } }
+        ]
+      },
+      center: [0, 20],
+      zoom: 1.5,
+      // Performance options
+      maxTileCacheSize: 100,
+      renderWorldCopies: false
+    });
+
+    map.addControl(new maplibregl.NavigationControl());
+
+    // FPS counter
+    let frames = 0;
+    let lastTime = performance.now();
+    const statsEl = document.getElementById('stats');
+
+    function updateStats() {
+      frames++;
+      const now = performance.now();
+      if (now - lastTime >= 1000) {
+        const fps = Math.round(frames * 1000 / (now - lastTime));
+        statsEl.textContent = `FPS: ${fps} | Tiles: ${map.style.sourceCaches.osm._tilesLoaded || 'N/A'}`;
+        frames = 0;
+        lastTime = now;
+      }
+      requestAnimationFrame(updateStats);
+    }
+    updateStats();
+  </script>
+</body>
+</html>

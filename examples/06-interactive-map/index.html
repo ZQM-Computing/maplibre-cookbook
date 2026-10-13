@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MapLibre Pattern 06: Interactive Map</title>
+  <link href="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.css" rel="stylesheet">
+  <script src="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.js"></script>
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { width: 100vw; height: 100vh; }
+    .info { position: absolute; top: 10px; left: 10px; background: white; padding: 10px; border-radius: 4px; z-index: 1; }
+    .popup { max-width: 300px; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="info">
+    <h3>Interactive Map</h3>
+    <p>Click points for popups, hover for highlights.</p>
+  </div>
+  <script>
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: {
+        version: 8,
+        sources: {
+          'osm': {
+            type: 'vector',
+            tiles: ['https://demotiles.maplibre.org/tiles/{z}/{x}/{y}.pbf'],
+            tileSize: 512
+          },
+          'points': {
+            type: 'geojson',
+            data: {
+              type: 'FeatureCollection',
+              features: [
+                { type: 'Feature', geometry: { type: 'Point', coordinates: [-80.93, 29.02] }, properties: { name: 'Point A', description: 'First location' } },
+                { type: 'Feature', geometry: { type: 'Point', coordinates: [-80.92, 29.03] }, properties: { name: 'Point B', description: 'Second location' } },
+                { type: 'Feature', geometry: { type: 'Point', coordinates: [-80.91, 29.01] }, properties: { name: 'Point C', description: 'Third location' } }
+              ]
+            }
+          }
+        },
+        layers: [
+          { id: 'bg', type: 'background', paint: { 'background-color': '#f0f0f0' } },
+          { id: 'osm', type: 'fill', source: 'osm', 'source-layer': 'landuse', paint: { 'fill-color': '#d4e6c3' } },
+          {
+            id: 'points',
+            type: 'circle',
+            source: 'points',
+            paint: {
+              'circle-radius': 8,
+              'circle-color': '#e07b24',
+              'circle-stroke-width': 2,
+              'circle-stroke-color': '#fff'
+            }
+          }
+        ]
+      },
+      center: [-80.92, 29.02],
+      zoom: 10
+    });
+
+    map.addControl(new maplibregl.NavigationControl());
+
+    // Click for popup
+    map.on('click', 'points', (e) => {
+      const feature = e.features[0];
+      new maplibregl.Popup()
+        .setLngLat(feature.geometry.coordinates)
+        .setHTML(`<div class="popup"><h3>${feature.properties.name}</h3><p>${feature.properties.description}</p></div>`)
+        .addTo(map);
+    });
+
+    // Hover cursor
+    map.on('mouseenter', 'points', () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', 'points', () => { map.getCanvas().style.cursor = ''; });
+  </script>
+</body>
+</html>

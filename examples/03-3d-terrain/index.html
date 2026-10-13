@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MapLibre Pattern 03: 3D Terrain</title>
+  <link href="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.css" rel="stylesheet">
+  <script src="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.js"></script>
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { width: 100vw; height: 100vh; }
+    .info { position: absolute; top: 10px; left: 10px; background: white; padding: 10px; border-radius: 4px; z-index: 1; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="info">
+    <h3>3D Terrain</h3>
+    <p>Elevation data with hillshade and 3D buildings.</p>
+  </div>
+  <script>
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: {
+        version: 8,
+        sources: {
+          'osm': {
+            type: 'vector',
+            tiles: ['https://demotiles.maplibre.org/tiles/{z}/{x}/{y}.pbf'],
+            tileSize: 512
+          },
+          'terrain': {
+            type: 'raster-dem',
+            tiles: ['https://demotiles.maplibre.org/terrain-tiles/{z}/{x}/{y}.png'],
+            tileSize: 512
+          }
+        },
+        layers: [
+          { id: 'bg', type: 'background', paint: { 'background-color': '#f0f0f0' } },
+          { id: 'osm', type: 'fill', source: 'osm', 'source-layer': 'landuse', paint: { 'fill-color': '#d4e6c3' } },
+          {
+            id: 'hillshade',
+            type: 'hillshade',
+            source: 'terrain',
+            paint: { 'hillshade-shadow-color': '#000', 'hillshade-highlight-color': '#fff' }
+          }
+        ],
+        terrain: { source: 'terrain', exaggeration: 1.5 }
+      },
+      center: [0, 20],
+      zoom: 1.5,
+      pitch: 45,
+      bearing: 0
+    });
+
+    map.addControl(new maplibregl.NavigationControl());
+  </script>
+</body>
+</html>
