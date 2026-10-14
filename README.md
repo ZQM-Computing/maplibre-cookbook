@@ -1,37 +1,73 @@
 # MapLibre Patterns
 
-Production-tested MapLibre GL JS patterns for frontend vector tile rendering.
+[![CI](https://github.com/ZQM-Computing/maplibre-patterns/actions/workflows/ci.yml/badge.svg)](https://github.com/ZQM-Computing/maplibre-patterns/actions/workflows/ci.yml)
+
+Production-tested MapLibre GL JS patterns for frontend vector tile rendering — custom layers, 3D terrain, performance tuning, and interactive maps. Every example is a single self-contained HTML file: no build step, no dependencies beyond the MapLibre CDN.
 
 ## Who this is for
 
-Web developers, GIS developers, and frontend engineers.
+Web developers, GIS developers, and frontend engineers who need to put spatial data on a map in the browser without a framework toolchain.
 
-## What's inside
+## Prerequisites
 
-- `examples/` — Runnable HTML/JS demos
+- A modern browser (Chrome, Firefox, Safari, Edge)
+- Internet access for the MapLibre GL JS 4.x CDN (each example loads `maplibre-gl@4.0.0` from unpkg)
+
+No install, no build. Clone the repo and open a file.
+
+## Quickstart
+
+```bash
+# Serve locally (avoids file:// restrictions on some browsers)
+python3 -m http.server 8000
+
+# Then open http://localhost:8000/examples/01-vector-tiles/
+```
+
+Or just double-click any `examples/*/index.html`.
 
 ## Patterns
 
-| # | Pattern | Description |
-|---|---------|-------------|
-| 1 | Vector tiles | Render MVT vector tiles |
-| 2 | Custom layers | Fill, line, symbol, circle, heatmap |
-| 3 | 3D terrain | Terrain and 3D buildings |
-| 4 | Performance | Glyphs, sprites, tile optimization |
-| 5 | PostGIS MVT | Generate MVT from PostGIS |
-| 6 | Interactive map | Full-featured interactive map |
+| # | Example | What it demonstrates |
+|---|---------|----------------------|
+| 01 | `01-vector-tiles` | Rendering MVT vector tiles from a public tile source |
+| 02 | `02-custom-layers` | Fill, line, symbol, circle, and heatmap layers |
+| 03 | `03-3d-terrain` | Terrain exaggeration and 3D buildings |
+| 04 | `04-performance` | Glyphs, sprites, and tile-loading optimization |
+| 05 | `05-postgis-mvt` | Client-side rendering of MVT tiles generated server-side with PostGIS `ST_AsMVT` (see the pattern notes in the file for the SQL side) |
+| 06 | `06-interactive-map` | Full-featured interactive map combining the earlier patterns |
 
-## Requirements
+Example 05 is client-side only: it shows how to consume MVT tiles in MapLibre, and documents the `ST_AsMVT` query shape you'd serve them from. For the server side, see [postgis-patterns](https://github.com/ZQM-Computing/postgis-patterns).
 
-- MapLibre GL JS >= 4.0
-- Modern browser (Chrome, Firefox, Safari, Edge)
+## Repository layout
 
-## Quick start
-
-```bash
-cd examples/01-vector-tiles
-# Open index.html in browser
 ```
+maplibre-patterns/
+├── examples/
+│   ├── 01-vector-tiles/index.html
+│   ├── 02-custom-layers/index.html
+│   ├── 03-3d-terrain/index.html
+│   ├── 04-performance/index.html
+│   ├── 05-postgis-mvt/index.html
+│   └── 06-interactive-map/index.html
+├── README.md
+├── LICENSE
+└── CONTRIBUTING.md
+```
+
+## Validation
+
+Examples are validated by opening them in a browser (or served via `python3 -m http.server`) and confirming the map renders without console errors. CI lints the repository on every push and pull request.
+
+## Roadmap
+
+- PMTiles single-file tiles as a vector source
+- Deck.gl overlay interop sketch
+- Offline/service-worker tile caching
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Report security issues to zqmcomputing@gmail.com — please do not open a public issue for those.
 
 ## More from this series
 
@@ -66,3 +102,8 @@ MIT — see LICENSE file.
 
 *Part of [ZQM Labs](https://github.com/ZQM-Computing) — games, gear & a little mischief.*
 
+*Part of [ZQM Computing](https://github.com/ZQM-Computing) — games, gear & a little mischief.*
+
+## License
+
+MIT — see [LICENSE](LICENSE).
