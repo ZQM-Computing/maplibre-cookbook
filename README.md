@@ -36,6 +36,14 @@ python3 -m http.server 8000
 
 Or just double-click any `examples/*/index.html`.
 
+## Usage
+
+Each pattern is a self-contained, runnable example. Start from the
+[Quickstart](#quickstart), then open any entry in the [Patterns](#patterns)
+list and run it end to end. Copy the pattern into your own project and
+swap in your data — the patterns are reference implementations, not a
+package to install.
+
 ## Patterns
 
 | # | Example | What it demonstrates |
@@ -47,7 +55,7 @@ Or just double-click any `examples/*/index.html`.
 | 05 | `05-postgis-mvt` | Client-side rendering of MVT tiles generated server-side with PostGIS `ST_AsMVT` (see the pattern notes in the file for the SQL side) |
 | 06 | `06-interactive-map` | Full-featured interactive map combining the earlier patterns |
 
-Example 05 is client-side only: it shows how to consume MVT tiles in MapLibre, and documents the `ST_AsMVT` query shape you'd serve them from. For the server side, see [postgis-patterns](https://github.com/ZQM-Computing/postgis-patterns).
+Example 05 is client-side only: it shows how to consume MVT tiles in MapLibre, and documents the `ST_AsMVT` query shape you’d serve them from. For the server side, see [postgis-patterns](https://github.com/ZQM-Computing/postgis-patterns).
 
 ## Repository layout
 
