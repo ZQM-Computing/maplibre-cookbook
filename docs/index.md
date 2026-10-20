@@ -1,11 +1,13 @@
 # MapLibre Patterns
 
 <!-- ZQM-START -->
+<!-- markdownlint-disable MD033 -->
 <p align="center">
   <strong>ZQM Computing — Geospatial Engineering & Scientific Computing</strong><br>
   <a href="https://github.com/ZQM-Computing">ZQM Computing</a> •
   <a href="https://github.com/ZQM-Labs">ZQM Labs</a>
 </p>
+<!-- markdownlint-enable MD033 -->
 <!-- ZQM-END -->
 
 [![CI](https://github.com/ZQM-Computing/maplibre-patterns/actions/workflows/ci.yml/badge.svg)](https://github.com/ZQM-Computing/maplibre-patterns/actions/workflows/ci.yml)
@@ -49,7 +51,7 @@ Example 05 is client-side only: it shows how to consume MVT tiles in MapLibre, a
 
 ## Repository layout
 
-```
+```text
 maplibre-patterns/
 ├── examples/
 │   ├── 01-vector-tiles/index.html
@@ -75,7 +77,7 @@ Examples are validated by opening them in a browser (or served via `python3 -m h
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Report security issues to zqmcomputing@gmail.com — please do not open a public issue for those.
+See [CONTRIBUTING.md](CONTRIBUTING.md). Report security issues to <zqmcomputing@gmail.com> — please do not open a public issue for those.
 
 ## More from this series
 
@@ -116,11 +118,8 @@ MIT — see LICENSE file.
 
 *Part of [ZQM Computing](https://github.com/ZQM-Computing) — geospatial engineering, scientific computing, and infrastructure patterns.*
 
-## License
-
-MIT — see [LICENSE](LICENSE).
-
 <!-- ZQM-FOOTER-START -->
+<!-- markdownlint-disable MD033 -->
 ---
 
 <p align="center">
@@ -129,4 +128,5 @@ MIT — see [LICENSE](LICENSE).
   <a href="https://github.com/ZQM-Labs">ZQM Labs</a> •
   <a href="https://github.com/ZQM-Computing">ZQM Computing</a>
 </p>
+<!-- markdownlint-enable MD033 -->
 <!-- ZQM-FOOTER-END -->
