@@ -55,7 +55,7 @@ package to install.
 | 05 | `05-postgis-mvt` | Client-side rendering of MVT tiles generated server-side with PostGIS `ST_AsMVT` (see the pattern notes in the file for the SQL side) |
 | 06 | `06-interactive-map` | Full-featured interactive map combining the earlier patterns |
 
-Example 05 is client-side only: it shows how to consume MVT tiles in MapLibre, and documents the `ST_AsMVT` query shape you’d serve them from. For the server side, see [postgis-patterns](https://github.com/ZQM-Computing/postgis-patterns).
+Example 05 is client-side only: it shows how to consume MVT tiles in MapLibre, and documents the `ST_AsMVT` query shape you'd serve them from. For the server side, see [postgis-patterns](https://github.com/ZQM-Computing/postgis-patterns).
 
 ## Repository layout
 
