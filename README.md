@@ -14,6 +14,16 @@
 
 Production-tested MapLibre GL JS patterns for frontend vector tile rendering — custom layers, 3D terrain, performance tuning, and interactive maps. Every example is a single self-contained HTML file: no build step, no dependencies beyond the MapLibre CDN.
 
+## Repository role and status
+
+**Status:** Active, public.
+
+**What this repository is:** MapLibre GL JS patterns for frontend vector-tile rendering — custom layers, 3D terrain, performance tuning, and interactive maps, each example a single self-contained HTML file.
+
+**What it contributes:** Part of the ZQM Computing public geospatial portfolio — production-grade pattern and reference repositories that document geospatial engineering practice across the stack. This repository is the reusable pattern library for its layer: working code and runbooks that practitioners can lift into their own pipelines, and portfolio evidence of the engineering practice behind ZQM Computing. The umbrella index for the series is [geospatial-patterns](https://github.com/ZQM-Computing/geospatial-patterns).
+
+**Standing:** The portfolio program was completed and Tier-1 hardened on 2026-10-15, with prose CI enforced as required status checks. This repository is standalone — no other repository or deployment depends on it.
+
 ## Who this is for
 
 Web developers, GIS developers, and frontend engineers who need to put spatial data on a map in the browser without a framework toolchain.
