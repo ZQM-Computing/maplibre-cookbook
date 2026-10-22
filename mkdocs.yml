@@ -1,4 +1,4 @@
-site_name: maplibre-patterns
+site_name: MapLibre Patterns
 site_url: https://maplibre.zqmlabs.com/
 site_description: MapLibre GL JS patterns — custom layers, 3D terrain, performance tuning, interactive maps
 site_author: ZQM Computing
@@ -6,6 +6,7 @@ repo_url: https://github.com/ZQM-Computing/maplibre-patterns
 
 theme:
   name: material
+  custom_dir: docs/overrides
   features:
     - navigation.tabs
     - navigation.sections
