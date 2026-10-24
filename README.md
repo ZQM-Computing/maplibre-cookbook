@@ -11,7 +11,7 @@
 <!-- ZQM-END -->
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) ![GitHub](https://img.shields.io/github/stars/ZQM-Computing/maplibre-cookbook?style=social)
-[![CI](https://github.com/ZQM-Computing/maplibre-patterns/actions/workflows/ci.yml/badge.svg)](https://github.com/ZQM-Computing/maplibre-patterns/actions/workflows/ci.yml)
+[![CI](https://github.com/ZQM-Computing/maplibre-cookbook/actions/workflows/ci.yml/badge.svg)](https://github.com/ZQM-Computing/maplibre-cookbook/actions/workflows/ci.yml)
 
 Production-tested MapLibre GL JS patterns for frontend vector tile rendering — custom layers, 3D terrain, performance tuning, and interactive maps. Every example is a single self-contained HTML file: no build step, no dependencies beyond the MapLibre CDN.
 
@@ -71,7 +71,7 @@ Example 05 is client-side only: it shows how to consume MVT tiles in MapLibre, a
 ## Repository layout
 
 ```text
-maplibre-patterns/
+maplibre-cookbook/
 ├── examples/
 │   ├── 01-vector-tiles/index.html
 │   ├── 02-custom-layers/index.html
@@ -96,7 +96,7 @@ Examples are validated by opening them in a browser (or served via `python3 -m h
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/ZQM-Computing/maplibre-patterns/blob/main/CONTRIBUTING.md). Report security issues to <zqmcomputing@gmail.com> — please do not open a public issue for those.
+See [CONTRIBUTING.md](https://github.com/ZQM-Computing/maplibre-cookbook/blob/main/CONTRIBUTING.md). Report security issues to <zqmcomputing@gmail.com> — please do not open a public issue for those.
 
 ## Related repositories
 
