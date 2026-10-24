@@ -1,0 +1,3 @@
+-- Pattern 04: Performance
+-- Use vector tiles, simplify geometries, limit features per tile
+-- map.addSource('data', {type:'vector', tiles:['...'], maxzoom:14})

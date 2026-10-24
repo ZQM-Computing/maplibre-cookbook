@@ -1,0 +1,3 @@
+-- Pattern 03: 3D Terrain (MapLibre)
+-- map.addSource('terrain', {type:'raster-dem', tiles:['https://.../{z}/{x}/{y}.png']})
+-- map.setTerrain({source:'terrain', exaggeration:1.5})

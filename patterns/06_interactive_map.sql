@@ -1,0 +1,3 @@
+-- Pattern 06: Interactive Map
+-- map.on('click', 'layer', e => { console.log(e.features[0].properties); })
+-- map.setPaintProperty('layer','fill-color',['case',['==',['get','id'],selected],'#f00','#00f'])
