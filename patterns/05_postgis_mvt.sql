@@ -1,2 +1,0 @@
--- Pattern 05: PostGIS MVT
--- SELECT ST_AsMVT(tile, 'layer') FROM (SELECT ST_AsMVTGeom(geom, bounds) geom FROM table) t

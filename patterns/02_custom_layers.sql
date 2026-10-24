@@ -1,3 +1,0 @@
--- Pattern 02: Custom Layers
--- Add custom layer
--- map.addLayer({id: 'custom', type: 'custom', renderingMode: '3d', onAdd: ..., render: ...})
