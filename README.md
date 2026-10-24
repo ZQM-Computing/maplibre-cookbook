@@ -10,6 +10,7 @@
 <!-- markdownlint-enable MD033 -->
 <!-- ZQM-END -->
 
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) ![GitHub](https://img.shields.io/github/stars/ZQM-Computing/maplibre-cookbook?style=social)
 [![CI](https://github.com/ZQM-Computing/maplibre-patterns/actions/workflows/ci.yml/badge.svg)](https://github.com/ZQM-Computing/maplibre-patterns/actions/workflows/ci.yml)
 
 Production-tested MapLibre GL JS patterns for frontend vector tile rendering — custom layers, 3D terrain, performance tuning, and interactive maps. Every example is a single self-contained HTML file: no build step, no dependencies beyond the MapLibre CDN.
