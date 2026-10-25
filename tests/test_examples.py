@@ -17,6 +17,24 @@ def test_mkdocs_yml_exists():
     assert (REPO_ROOT / "mkdocs.yml").is_file(), "mkdocs.yml must exist"
 
 
+
+def test_examples_avoid_private_maplibre_internals():
+    """Examples use supported MapLibre APIs and show structurally valid MVT SQL."""
+    performance = (REPO_ROOT / "examples/04-performance/index.html").read_text(
+        encoding="utf-8"
+    )
+    assert "map.areTilesLoaded()" in performance
+    assert "sourceCaches" not in performance
+
+    mvt = (REPO_ROOT / "examples/05-postgis-mvt/index.html").read_text(
+        encoding="utf-8"
+    )
+    assert "ST_TileEnvelope($1, $2, $3)" in mvt
+    assert "ST_AsMVTGeom(t.geom, bounds.geom" in mvt
+    assert "SELECT ST_AsMVT(mvtgeom, 'default', 4096, 'geom')" in mvt
+    assert "FROM mvtgeom;" in mvt
+
+
 def test_readme_exists():
     """Verify README.md exists."""
     assert (REPO_ROOT / "README.md").is_file(), "README.md must exist"
