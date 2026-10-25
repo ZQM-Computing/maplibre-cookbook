@@ -1,6 +1,6 @@
 site_name: MapLibre Patterns
 site_url: https://maplibre.zqmlabs.com/
-site_description: MapLibre GL JS patterns — custom layers, 3D terrain, performance tuning, interactive maps
+site_description: MapLibre GL JS web-mapping examples for vector tiles, custom layers, interactive geospatial visualization, 3D terrain, and browser performance.
 site_author: ZQM Computing
 repo_url: https://github.com/ZQM-Computing/maplibre-cookbook
 
