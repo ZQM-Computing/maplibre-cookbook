@@ -13,7 +13,7 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) ![GitHub](https://img.shields.io/github/stars/ZQM-Computing/maplibre-cookbook?style=social)
 [![CI](https://github.com/ZQM-Computing/maplibre-cookbook/actions/workflows/ci.yml/badge.svg)](https://github.com/ZQM-Computing/maplibre-cookbook/actions/workflows/ci.yml)
 
-Runnable MapLibre GL JS examples for frontend vector tile rendering — custom layers, 3D terrain, performance tuning, and interactive maps. Each example is a self-contained HTML file with no build step and uses the MapLibre CDN; validate behavior against your target browser, data, and deployment environment.
+Runnable MapLibre GL JS examples for web mapping and geospatial visualization, including vector tiles, custom layers, 3D terrain, interactive maps, and performance tuning. Each example is a standalone HTML page using the MapLibre CDN; test browser, source-data, attribution, and deployment requirements before production use.
 
 ## Repository role and status
 
