@@ -57,12 +57,21 @@
     map.addControl(new maplibregl.NavigationControl());
 
     // Server-side SQL (PostGIS):
-    // SELECT ST_AsMVT(q, 'default', 4096, 'geom') AS mvt
-    // FROM (
-    //   ST_AsMVTGeom(geom, ST_TileEnvelope(z, x, y), 4096, 256, true) AS geom
-    //   FROM my_table
-    //   WHERE geom && ST_TileEnvelope(z, x, y)
-    // ) q;
+    // Bind $1, $2, $3 to tile z, x, y in the server endpoint:
+    // WITH bounds AS (
+    //   SELECT ST_TileEnvelope($1, $2, $3) AS geom
+    // ),
+    // mvtgeom AS (
+    //   SELECT
+    //     t.id,
+    //     t.name,
+    //     ST_AsMVTGeom(t.geom, bounds.geom, 4096, 256, true) AS geom
+    //   FROM my_table AS t
+    //   CROSS JOIN bounds
+    //   WHERE t.geom && bounds.geom
+    // )
+    // SELECT ST_AsMVT(mvtgeom, 'default', 4096, 'geom') AS mvt
+    // FROM mvtgeom;
   </script>
 </body>
 </html>
