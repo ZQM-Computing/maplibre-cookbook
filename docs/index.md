@@ -39,7 +39,7 @@ Or just double-click any `examples/*/index.html`.
 ## Patterns
 
 | # | Example | What it demonstrates |
-|---|---------|----------------------|
+| --- | --------- | ---------------------- |
 | 01 | `01-vector-tiles` | Rendering MVT vector tiles from a public tile source |
 | 02 | `02-custom-layers` | Fill, line, symbol, circle, and heatmap layers |
 | 03 | `03-3d-terrain` | Terrain exaggeration and 3D buildings |
