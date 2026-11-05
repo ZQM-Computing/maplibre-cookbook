@@ -21,7 +21,7 @@ A **MapLibre GL JS web-mapping cookbook** for interactive maps and browser-based
 
 **What this repository is:** MapLibre GL JS patterns for frontend vector-tile rendering — custom layers, 3D terrain, performance tuning, and interactive maps, each example a single self-contained HTML file.
 
-**What it contributes:** Part of the ZQM Computing public geospatial portfolio — production-grade pattern and reference repositories that document geospatial engineering practice across the stack. This repository is the reusable pattern library for its layer: working code and runbooks that practitioners can lift into their own pipelines, and portfolio evidence of the engineering practice behind ZQM Computing. The umbrella index for the series is [geospatial-cookbooks](https://github.com/ZQM-Computing/geospatial-cookbooks).
+**What it contributes:** Part of the ZQM Computing public geospatial portfolio — practical, reviewable reference patterns for browser-based mapping. Examples are starting points for adaptation, not certified production components; validate data sources, licensing, security policy, accessibility, performance, and operational behavior in the target application. The umbrella index for the series is [geospatial-cookbooks](https://github.com/ZQM-Computing/geospatial-cookbooks).
 
 **Standing:** This repository is maintained independently. Automated checks cover only the paths and environments configured in its workflows; they do not establish production readiness or operational certification. This repository is standalone — no other repository or deployment depends on it.
 
@@ -86,7 +86,15 @@ maplibre-cookbook/
 
 ## Validation
 
-Examples are validated by opening them in a browser (or served via `python3 -m http.server`) and confirming the map renders without console errors. CI lints the repository on every push and pull request.
+CI currently provides repository linting; it does not launch a browser or verify map rendering, tile availability, accessibility, or console behavior. Treat browser validation as a manual smoke test:
+
+1. Serve the repository with `python3 -m http.server 8000`.
+2. Open each example in a current supported browser and inspect the developer console and network panel.
+3. Confirm the map style, glyphs, sprites, and tile sources load; verify attribution and source licensing.
+4. Exercise the documented interactions, keyboard navigation, responsive layout, and expected failure behavior when a remote source is unavailable.
+5. Record the browser/version and external source used when reporting a validation result.
+
+A successful manual smoke test is evidence for that browser and test session only; it is not a cross-browser or production-readiness certification.
 
 ## Roadmap
 

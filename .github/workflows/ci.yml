@@ -10,11 +10,6 @@ name: CI
       - '**.gif'
   pull_request:
     branches: [ main, master ]
-    paths-ignore:
-      - '**.md'
-      - '**.png'
-      - '**.jpg'
-      - '**.gif'
   workflow_dispatch:
 
 concurrency:
